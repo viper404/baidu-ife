@@ -12,7 +12,7 @@ h2 {
   font-weight: lighter;
   text-decoration: underline;
   text-indent: 24px;
-  text-transform: lowercase;;
+  text-transform: lowercase;
   word-spacing: 8px;
 }
 p {
@@ -23,8 +23,25 @@ p {
   text-indent: 24px;
   white-space: pre;
 }
-img {
+.logo {
+  max-width: 600px;
+  margin: auto;
+}
+.logo img {
   border-color: red;
   border-style: solid;
   border-width: 2px;
+}
+#div1 {
+  background-color: red;
+  height: 50px;
+  margin: 12px auto;
+  width: 960px;
+}
+#div2 {
+  background-color: red;
+  height: 50px;
+  left: 187px;
+  position: relative;
+  width: 960px;
 }
