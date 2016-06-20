@@ -53,3 +53,34 @@ p {
   margin: 12px auto;
   width: 960px;
 }
+.container {
+  position: relative;
+}
+#divA {
+  background-color: yellow;
+  height: 50px;
+  left: 195px;
+  margin-bottom: 12px;
+  position: absolute;
+  width: 100px;
+}
+#divB {
+  background-color: blue;
+  height: 50px;
+  margin-bottom: 12px;
+  margin-left: 287px;
+  margin-right: 187px;
+}
+#divC {
+  background-color: yellow;
+  float: left;
+  height: 50px;
+  margin-left: 187px;
+  width: 100px;
+}
+#divD {
+  background-color: blue;
+  height: 50px;
+  margin-left: 287px;
+  margin-right: 187px;
+}
