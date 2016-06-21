@@ -32,6 +32,7 @@ p {
   border-style: solid;
   border-width: 2px;
 }
+/* */
 #div1 {
   background-color: red;
   height: 50px;
@@ -45,6 +46,7 @@ p {
   position: relative;
   width: 960px;
 }
+/* */
 #div3 {
   border-radius: 10px;
   border-style: solid;
@@ -53,9 +55,11 @@ p {
   margin: 12px auto;
   width: 960px;
 }
+/* */
 .container {
   position: relative;
 }
+/* */
 #divA {
   background-color: yellow;
   height: 50px;
@@ -71,16 +75,80 @@ p {
   margin-left: 287px;
   margin-right: 187px;
 }
+/* */
 #divC {
   background-color: yellow;
   float: left;
   height: 50px;
+  margin-bottom: 12px;
   margin-left: 187px;
   width: 100px;
 }
 #divD {
   background-color: blue;
   height: 50px;
+  margin-bottom: 12px;
   margin-left: 287px;
   margin-right: 187px;
+}
+/* */
+#box1 {
+  background-color: blue;
+  height: 50px;
+  left: 195px;
+  margin-bottom: 12px;
+  position: absolute;
+  width: 100px;
+}
+#box2 {
+  background-color: blue;
+  height: 50px;
+  right: 195px;
+  margin-bottom: 12px;
+  position: absolute;
+  width: 100px;
+}
+#box3 {
+  background-color: yellow;
+  height: 50px;
+  margin-bottom: 12px;
+  margin-left: 337px;
+  margin-right: 337px;
+}
+/* */
+#boxA {
+  background-color: blue;
+  float: left;
+  height: 50px;
+  margin-bottom: 12px;
+  margin-left: 187px;
+  width: 100px;
+}
+#boxB {
+  background-color: blue;
+  float: right;
+  height: 50px;
+  margin-bottom: 12px;
+  margin-right: 187px;
+  width: 100px;
+}
+#boxC {
+  background-color: yellow;
+  height: 50px;
+  margin-bottom: 12px;
+  margin-left: 337px;
+  margin-right: 337px;
+}
+/* */
+#container1 {
+  background-color: blue;
+  float: left;
+  height: 50px;
+  margin-left: 186.5px;
+  margin-top: 12px;
+  width: 100px;
+}
+#container2 {
+  background-color: red;
+  height: 350px;
 }
