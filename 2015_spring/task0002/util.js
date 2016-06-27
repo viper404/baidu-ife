@@ -51,7 +51,18 @@ console.log(tarObj.a);    // 1
 console.log(tarObj.b.b1[0]);    // "hello"
 // 对数组进行去重操作，只考虑数组中元素为数字或字符串，返回一个去重后的数组
 function uniqArray(arr) {
-    // your implement
+  arr = arr.sort();   // 先排序
+  var slow = 1;   // 后去重
+  var temp = [];
+  for (var fast = 0; fast < arr.length; fast++) {
+    if (arr[fast] === arr[fast+1]) {
+    }
+    else {
+      temp[slow] = arr[fast];
+      slow++;
+    }
+  }
+  return temp;
 }
 // 使用示例
 var a = [1, 3, 5, 7, 5, 3];
