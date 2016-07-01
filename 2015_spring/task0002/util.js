@@ -74,28 +74,18 @@ console.log(b);   // [1, 3, 5, 7]
 // 练习通过循环，以及字符串的一些基本方法，分别扫描字符串str头部和尾部是否有连续的空白字符，并且删掉他们，最后返回一个完成去除的字符串
 function simpleTrim(str) {
   var slow = 0;
-  var temp = [];
+  var temp = "";
   for (var fast = 0; fast < str.length; fast++) {
     if (str[fast] === " ") {
     }
     else {
-      temp[slow] = str[fast];
+      temp = temp+str[fast];
       slow++;
     }
   }
-  return temp.join("");
+  return temp;
 }
 // 使用示例
 var str = '   hi!  ';
 str = simpleTrim(str);
-console.log(str);   // 'hi!'
-// 很多同学肯定对于上面的代码看不下去，接下来，我们真正实现一个trim
-// 对字符串头尾进行空格字符的去除、包括全角半角空格、Tab等，返回一个字符串
-// 尝试使用一行简洁的正则表达式完成该题目
-function trim(str) {
-    // your implement
-}
-// 使用示例
-var str = '   hi!  ';
-str = trim(str);
 console.log(str);   // 'hi!'
