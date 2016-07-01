@@ -74,16 +74,16 @@ console.log(b);   // [1, 3, 5, 7]
 // 练习通过循环，以及字符串的一些基本方法，分别扫描字符串str头部和尾部是否有连续的空白字符，并且删掉他们，最后返回一个完成去除的字符串
 function simpleTrim(str) {
   var slow = 0;
-  var temp = [];
+  var temp = "";
   for (var fast = 0; fast < str.length; fast++) {
     if (str[fast] === " ") {
     }
     else {
-      temp[slow] = str[fast];
+      temp = temp+str[fast];
       slow++;
     }
   }
-  return temp.join("");
+  return temp;
 }
 // 使用示例
 var str = '   hi!  ';
