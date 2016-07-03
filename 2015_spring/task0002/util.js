@@ -126,3 +126,21 @@ function output(item, index) {
     console.log(index + ': ' + item);
 }
 each(arr, output);    // 0:java, 1:c, 2:php, 3:html
+// 获取一个对象里面第一层元素的数量，返回一个整数
+function getObjectLength(obj) {
+  var n = 0;
+  for (var i in obj) {
+    n++;
+  }
+  return n;
+}
+// 使用示例
+var obj = {
+    a: 1,
+    b: 2,
+    c: {
+        c1: 3,
+        c2: 4
+    }
+};
+console.log(getObjectLength(obj));    // 3
