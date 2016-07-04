@@ -154,3 +154,23 @@ function isMobilePhone(phone) {
   var patt = /^1[45|47|70|71|76|77|78|3d|5d|8d]+[0-9]{8}$/g;
   console.log(patt.test(phone));
 }
+// 为element增加一个样式名为newClassName的新样式
+function addClass(element, newClassName) {
+  element.setAttribute("class", newClassName);
+}
+// 移除element中的样式oldClassName
+function removeClass(element, oldClassName) {
+  element.removeAttribute(oldClassName);
+}
+// 判断siblingNode和element是否为同一个父元素下的同一级的元素，返回bool值
+function isSiblingNode(element, siblingNode) {
+  var item1 = element.parentNode;
+  var item2 = siblingNode.parentNode;
+  return item1.isSameNode(item2);
+}
+// 获取element相对于浏览器窗口的位置，返回一个对象{x, y}
+function getPosition(element) {
+  var x = element.offsetLeft;
+  var y = element.offsetTop;
+  return {x, y};
+}
