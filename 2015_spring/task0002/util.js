@@ -144,3 +144,13 @@ var obj = {
     }
 };
 console.log(getObjectLength(obj));    // 3
+// 判断是否为邮箱地址
+function isEmail(emailStr) {
+  var patt = /^[A-Za-z0-9]+[(\.|\-|\_)A-Za-z0-9]*@[A-Za-z0-9(\.|\-|\_)]*[A-Za-z0-9]+\.[A-Za-z]{2,3}$/g;
+  console.log(patt.test(emailStr));
+}
+// 判断是否为手机号
+function isMobilePhone(phone) {
+  var patt = /^1[45|47|70|71|76|77|78|3d|5d|8d]+[0-9]{8}$/g;
+  console.log(patt.test(phone));
+}
