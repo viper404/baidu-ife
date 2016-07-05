@@ -156,7 +156,7 @@ function isMobilePhone(phone) {
 }
 // 为element增加一个样式名为newClassName的新样式
 function addClass(element, newClassName) {
-  element.setAttribute("class", newClassName);
+  element.setAttribute(newClassName, "");
 }
 // 移除element中的样式oldClassName
 function removeClass(element, oldClassName) {
@@ -174,3 +174,20 @@ function getPosition(element) {
   var y = element.offsetTop;
   return {x, y};
 }
+// 测试用例
+function createElement() {
+  var divElement = document.createElement("div");
+  document.body.appendChild(divElement);
+}
+createElement();
+var divTest = document.getElementsByTagName("div")[0];
+addClass(divTest, "test");
+removeClass(divTest, "test");
+function createChildElement() {
+  var divElement = document.createElement("div");
+  divTest.appendChild(divElement);
+}
+createChildElement();
+var divChild = document.getElementsByTagName("div")[1];
+console.log(isSiblingNode(divTest, divChild));
+console.log(getPosition(divTest));
