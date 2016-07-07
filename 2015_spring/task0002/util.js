@@ -191,3 +191,88 @@ createChildElement();
 var divChild = document.getElementsByTagName("div")[1];
 console.log(isSiblingNode(divTest, divChild));
 console.log(getPosition(divTest));
+// 实现一个简单的Query
+function $(selector) {
+  if (selector[0] === "#") {
+    var patt = /\./g;
+    if (patt.test(selector)) {
+      arr = selector.split(patt);
+      var selectorid = arr[0];
+      var id = "";
+      for (var i = 1; i < selectorid.length-1; i++) {
+        id = id+selectorid[i];
+      }
+      var selectorclassname = arr[1];
+      var classname = "";
+      for (var i = 0; i < selectorclassname.length; i++) {
+        classname = classname+selectorclassname[i];
+      }
+      var element = document.getElementById(id);
+      return element.getElementsByClassName(classname)[0];
+    }
+    else {
+      var id = "";
+      for (var i = 1; i < selector.length; i++) {
+        id = id+selector[i];
+      }
+      return document.getElementById(id);
+    }
+  }
+  else if (selector[0] === ".") {
+    var classname = "";
+    for (var i = 1; i < selector.length; i++) {
+      classname = classname+selector[i];
+    }
+    return document.getElementsByClassName(classname)[0];
+  }
+  else if (selector[0] === "[") {
+    var patt = /\=/g;
+    if (patt.test(selector)) {
+      var arr = selector.split(patt);
+      var selectorproperty = arr[0];
+      var property = "";
+      for (var i = 1; i < selectorproperty.length; i++) {
+        property = property+selectorproperty[i];
+      }
+      var selectorvalue = arr[1];
+      var value = "";
+      for (var i = 0; i < selectorvalue.length-1; i++) {
+        value = value+selectorvalue[i];
+      }
+      var element = document.all;
+      for (var i in element) {
+        if (element[i].getAttribute(property) === value) {
+          break;
+        }
+      }
+      return element[i];
+    }
+    else {
+      var property = "";
+      for (var i = 1; i < selector.length-1; i++) {
+        property = property+selector[i];
+      }
+      var element = document.all;
+      for (var i in element) {
+        if (element[i].hasAttribute(property)) {
+          break;
+        }
+      }
+      return element[i];
+    }
+  }
+  else {
+    return document.getElementsByTagName(selector)[0];
+  }
+}
+// 可以通过id获取DOM对象，通过#标示，例如
+$("#adom");   // 返回id为adom的DOM对象
+// 可以通过tagName获取DOM对象，例如
+$("a");   // 返回第一个<a>对象
+// 可以通过样式名称获取DOM对象，例如
+$(".classa");   // 返回第一个样式定义包含classa的对象
+// 可以通过attribute匹配获取DOM对象，例如
+$("[data-log]");    // 返回第一个包含属性data-log的对象
+$("[data-time=2015]");    // 返回第一个包含属性data-time且值为2015的对象
+// 可以通过简单的组合提高查询便利性，例如
+$("#adom .classa");   // 返回id为adom的DOM所包含的所有子节点中，第一个样式定义包含classa的对象
