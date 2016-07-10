@@ -4,6 +4,7 @@ function quickSort(arr) {
     if ((tail-head) >= 1) {
       var i = head;
       var j = tail;
+      var temp = 0;
       var pivot = arr[head];
       while (i !== j) {
         if (arr[j] >= pivot) {
