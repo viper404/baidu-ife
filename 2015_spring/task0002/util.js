@@ -276,3 +276,47 @@ $("[data-log]");    // 返回第一个包含属性data-log的对象
 $("[data-time=2015]");    // 返回第一个包含属性data-time且值为2015的对象
 // 可以通过简单的组合提高查询便利性，例如
 $("#adom .classa");   // 返回id为adom的DOM所包含的所有子节点中，第一个样式定义包含classa的对象
+// 给一个element绑定一个针对event事件的响应，响应函数为listener
+function addEvent(element, event, listener) {
+  if (listener) {
+    element.setAttribute(event, "{clicklistener(event);event.stopPropagation()}");
+  }
+  else {
+    element.setAttribute(event, "clicklistener(event)");
+  }
+}
+// 例如：
+function clicklistener(event) {
+  ...
+}
+addEvent($("#doma"), "click", a); // a = false 或 a = true
+// 移除element对象对于event事件发生时执行listener的响应
+function removeEvent(element, event, listener) {
+  element.removeAttribute(event);
+}
+// 实现对click事件的绑定
+function addClickEvent(element, listener) {
+  if (listener) {
+    element.setAttribute("onclick", "{clicklistener(event);event.stopPropagation()}");
+  }
+  else {
+    element.setAttribute("onclick", "clicklistener(event)");
+  }
+}
+// 实现对于按Enter键时的事件绑定
+function addEnterEvent(element, listener) {
+  if (listener) {
+    element.setAttribute("onkeydown", "{enterlistener(event);event.stopPropagation()}");
+  }
+  else {
+    element.setAttribute("onkeydown", "enterlistener(event)");
+  }
+}
+function enterlistener() {
+  if (event.keyCode === 13) {
+    ...
+  }
+  else {
+    ...
+  }
+}
