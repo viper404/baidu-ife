@@ -287,9 +287,9 @@ function addEvent(element, event, listener) {
 }
 // 例如：
 function clicklistener(event) {
-  ...
+  console.log(1);
 }
-addEvent($("#doma"), "click", a); // a = false 或 a = true
+addEvent($("#doma"), "click", false);
 // 移除element对象对于event事件发生时执行listener的响应
 function removeEvent(element, event, listener) {
   element.removeAttribute(event);
@@ -314,9 +314,25 @@ function addEnterEvent(element, listener) {
 }
 function enterlistener() {
   if (event.keyCode === 13) {
-    ...
+    console.log(1);
   }
   else {
-    ...
+    console.log(2);
   }
+}
+// addEvent(element, event, listener) -> $.on(element, event, listener);
+$.on = function (element, event, listener) {
+  return addEvent(element, event, listener);
+}
+// removeEvent(element, event, listener) -> $.un(element, event, listener);
+$.un = function (element, event, listener) {
+  return removeEvent(element, event, listener);
+}
+// addClickEvent(element, listener) -> $.click(element, listener);
+$.click = function (element, listener) {
+  return addClickEvent(element, listener);
+}
+// addEnterEvent(element, listener) -> $.enter(element, listener);
+$.enter = function (element, listener) {
+  return addEnterEvent(element, listener);
 }
