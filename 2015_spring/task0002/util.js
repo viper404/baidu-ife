@@ -305,3 +305,32 @@ $.un = removeEvent;
 $.click = addClickEvent;
 // addEnterEvent(element, listener) -> $.enter(element, listener);
 $.enter = addEnterEvent;
+//function clickListener(event) {
+//    console.log(event);
+//}
+//function renderList() {
+//    $("#list").innerHTML = '<li>new item</li>';
+//}
+//function init() {
+//    each($("#list").getElementsByTagName('li'), function(item) {
+//        $.click(item, clickListener);
+//    });
+//    $.click($("#btn"), renderList);
+//}
+//init();
+// 先简单一些
+function delegateEvent(element, tag, eventName, listener) {
+  element.setAttribute(eventName, listener.name+"(event)");
+}
+function clickHandle(event) {
+  var name = event.target.nodeName;
+  var element = event.target.parentNode;
+  var children = element.getElementsByTagName(name);
+  for (var i = 0; i < children.length; i++) {
+    children[i].setAttribute("onclick", "console.log(2)");
+  }
+}
+$.delegate = delegateEvent;
+// 使用示例
+// 还是上面那段HTML，实现对list这个ul里面所有li的click事件进行响应
+$.delegate($("#list"), "li", "onclick", clickHandle);
