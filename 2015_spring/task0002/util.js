@@ -353,3 +353,65 @@ function liClicker() {
   console.log(4);
 }
 $.delegate("#list", "li", "onclick", liClicker);
+// 判断是否为IE浏览器，返回-1或者版本号
+function isIE() {
+  if (navigator.appName === "Microsoft Internet Explorer") {
+    return navigator.appVersion;
+  }
+  else {
+    return -1;
+  }
+}
+// 设置cookie
+function setCookie(cookieName, cookieValue, expiredays) {
+  var exdate = new Date();
+  exdate.setDate(exdate.getDate()+expiredays);
+  document.cookie = cookieName+"="+escape(cookieValue)+((expiredays === null) ? "" : ";expires="+exdate.toGMTString());
+}
+// 获取cookie值
+function getCookie(cookieName) {
+  if (document.cookie.length > 0) {
+    var cookiestart = document.cookie.indexOf(cookieName+"=");
+    if (cookiestart !== -1) {
+      cookiestart = cookiestart+cookieName.length+1;
+      var cookieend = document.cookie.indexOf(";", cookiestart);
+      if (cookieend === -1) {
+        cookieend = document.cookie.length;
+      }
+      return unescape(document.cookie.substring(cookiestart, cookieend));
+    }
+  }
+  return "";
+}
+// 学习Ajax，并尝试自己封装一个Ajax方法。实现如下方法：
+// options是一个对象，里面可以包括的参数为：
+// type: post或者get，可以有一个默认值
+// data: 发送的数据，为一个键值对象或者为一个用&连接的赋值字符串
+// onsuccess: 成功时的调用函数
+// onfail: 失败时的调用函数
+function ajax(url, options) {
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("POST", url, true);
+  var str = options.data;
+  xmlhttp.send(str.name+str.password);
+  var fun = options.onsuccess;
+  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+    return fun;
+  }
+  else {
+    console.log(5);
+  }
+}
+// 使用示例：
+ajax(
+    'http://localhost:8080/server/ajaxtest',
+    {
+        data: {
+            name: 'simon',
+            password: '123456'
+        },
+        onsuccess: function (responseText, xhr) {
+            console.log(responseText);
+        }
+    }
+);
