@@ -320,17 +320,36 @@ $.enter = addEnterEvent;
 //init();
 // 先简单一些
 function delegateEvent(element, tag, eventName, listener) {
-  element.setAttribute(eventName, listener.name+"(event)");
+  element.setAttribute(eventName, "var element = event.target.parentNode;"+
+  "var children = element.getElementsByTagName("+"'"+tag+"'"+");"+
+  "for (var i = 0; i < children.length; i++) {addEvent(children[i], "+"'"+eventName+"'"+", "+listener.name+");}");
 }
 function clickHandle(event) {
-  var name = event.target.nodeName;
-  var element = event.target.parentNode;
-  var children = element.getElementsByTagName(name);
-  for (var i = 0; i < children.length; i++) {
-    children[i].setAttribute("onclick", "console.log(2)");
-  }
+  console.log(2);
 }
 $.delegate = delegateEvent;
 // 使用示例
 // 还是上面那段HTML，实现对list这个ul里面所有li的click事件进行响应
 $.delegate($("#list"), "li", "onclick", clickHandle);
+// 估计有同学已经开始吐槽了，函数里面一堆$看着晕啊，那么接下来把我们的事件函数做如下封装改变：
+$.on = function (selector, event, listener) {
+  addEvent($(selector), event, listener);
+}
+$.click = function (selector, listener) {
+  addClickEvent($(selector), listener);
+}
+$.un = function (selector, event, listener) {
+  removeEvent($(selector), event, listener);
+}
+$.delegate = function (selector, tag, event, listener) {
+  delegateEvent($(selector), tag, event, listener);
+}
+// 使用示例：
+function logListener() {
+  console.log(3);
+}
+$.click("[data-log]", logListener);
+function liClicker() {
+  console.log(4);
+}
+$.delegate("#list", "li", "onclick", liClicker);
