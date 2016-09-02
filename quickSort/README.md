@@ -1,5 +1,6 @@
 ## 三种快速排序
-## 简单排序 by Michael McMillan
+> ## 简单排序 by Michael McMillan
+
 ```javascript
 function quickSort(arr) {
   if (arr.length === 0) {
@@ -19,7 +20,8 @@ function quickSort(arr) {
   return quickSort(smaller).concat(pivot, quickSort(larger));
 }
 ```
-## 普通排序 by viper404
+> ## 普通排序 by viper404
+
 ```javascript
 function quickSort(arr) {
   function loop(head, tail) {
@@ -57,7 +59,8 @@ function quickSort(arr) {
   return arr;
 }
 ```
-## 改进排序 by viper404
+> ## 改进排序 by viper404
+
 ```javascript
 function location(arr, head, tail) {
   var i = head;
